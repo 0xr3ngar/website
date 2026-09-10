@@ -506,7 +506,8 @@ body {
 .markdown-content img {
   max-width: 100%;
   border-radius: 8px;
-  margin: 1.5rem 0;
+  display: block;
+  margin: 1.5rem auto;
 }
 
 .markdown-content table {
