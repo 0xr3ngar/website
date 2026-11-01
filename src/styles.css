@@ -396,6 +396,14 @@ body {
 
 /* ── Blog index ────────────────────────────────────────────── */
 
+/* Blog index locks .writings to 100dvh with inner scroll; on mobile Safari
+   100vh (body min-height) is taller than 100dvh, so the document itself
+   would scroll behind the list. Freeze the document while .writings is up. */
+html:has(.writings),
+body:has(.writings) {
+  overflow: hidden;
+}
+
 .writings {
   height: 100dvh;
   display: flex;
