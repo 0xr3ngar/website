@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -104,12 +105,17 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
                         const id = slugify(String(children));
                         return <h3 id={id}>{children}<HeadingAnchor id={id} /></h3>;
                     },
-                    code({ className, children, ...props }) {
-                        const match = /language-(\w+)/.exec(className ?? '');
-                        const codeString = String(children).replace(/\n$/, '');
+                    pre({ children }) {
+                        const first = React.Children.toArray(children)[0];
+                        if (!React.isValidElement<{ className?: string; children?: React.ReactNode }>(first)) {
+                            return <pre>{children}</pre>;
+                        }
+
+                        const match = /language-(\w+)/.exec(first.props.className ?? '');
+                        const codeString = String(first.props.children ?? '').replace(/\n$/, '');
 
                         if (!match || !(match[1] in LANGUAGES)) {
-                            return <code className={className} {...props}>{children}</code>;
+                            return <pre>{children}</pre>;
                         }
 
                         return (
@@ -128,6 +134,9 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
                                 </SyntaxHighlighter>
                             </div>
                         );
+                    },
+                    code({ className, children, ...props }) {
+                        return <code className={className} {...props}>{children}</code>;
                     }
                 }}
             >
