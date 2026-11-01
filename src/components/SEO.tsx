@@ -52,7 +52,6 @@ export function SEO({
           description: DEFAULT_DESCRIPTION,
           sameAs: [
             'https://github.com/0xr3ngar',
-            'https://x.com/0xr3ngar',
           ],
         };
 

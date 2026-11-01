@@ -1,13 +1,17 @@
 import { Link } from 'waku';
-import { OrthodoxCross } from '../components/OrthodoxCross';
-import { GitHubIcon, XIcon } from '../components/icons';
 import { SEO } from '../components/SEO';
 import { BASE_URL } from '../lib/seo';
+import { AsciiField } from '../components/AsciiField';
 
-const links = [
-  { name: 'github', url: 'https://github.com/0xr3ngar', Icon: GitHubIcon },
-  { name: 'x', url: 'https://x.com/0xr3ngar', Icon: XIcon },
-];
+function Word({ word, className }: { word: string; className: string }) {
+    return (
+        <span className={className} aria-hidden="true">
+            {word.split('').map((ch, i) => (
+                <span key={i} className="name-letter">{ch}</span>
+            ))}
+        </span>
+    );
+}
 
 export default async function HomePage() {
     return (
@@ -19,20 +23,32 @@ export default async function HomePage() {
                 ogType="website"
             />
 
-            <div className="home-container">
-                <Link to="/blog" className="right-link">blog →</Link>
-                <div className="home-content">
-                    <OrthodoxCross className="cross" />
-                    <h1 className="name">Bogdan Nikolov</h1>
-                <nav className="links">
-                    {links.map(({ name, url, Icon }) => (
-                        <a key={name} href={url} className="link" target="_blank" rel="noopener noreferrer" aria-label={name}>
-                            <Icon className="link-icon" />
-                        </a>
-                    ))}
-                </nav>
+            <AsciiField />
+
+            <div className="cover-frame">
+                <span className="frame-label frame-tl" aria-hidden="true">0xr3ngar</span>
+                <Link to="/blog" className="frame-label frame-tr">blog →</Link>
+                <a
+                    href="https://github.com/0xr3ngar"
+                    className="frame-label frame-bl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    github ↗
+                </a>
+                <span className="frame-label frame-br" aria-hidden="true">bnn.dev</span>
             </div>
-        </div>
+
+            <div className="center-screen">
+                <div className="home-content">
+                    <h1 className="name" aria-label="Bogdan Nikolov">
+                        <Word word="bogdan" className="name-heavy" />
+                        <Word word="nikolov" className="name-thin" />
+                    </h1>
+                    <div className="home-rule" aria-hidden="true" />
+                    <p className="home-tagline">software · security · faith</p>
+                </div>
+            </div>
         </>
     );
 }
