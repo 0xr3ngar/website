@@ -45,7 +45,7 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
-  font-size: 125%;
+  font-size: clamp(125%, calc(125% + (100vw - 1440px) * 0.02), 200%);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -353,9 +353,9 @@ html.js .reveal.revealed,
 
 .main {
   padding-top: 7rem;
+  padding-inline: clamp(1.5rem, 4vw, 3.5rem);
   max-width: 46rem;
-  margin-left: clamp(1.5rem, 4vw, 3.5rem);
-  margin-right: clamp(1.5rem, 4vw, 3.5rem);
+  margin-inline: auto;
   padding-bottom: 5rem;
   position: relative;
   z-index: 10;
@@ -415,9 +415,8 @@ body:has(.writings) {
   display: flex;
   flex-direction: column;
   max-width: 42rem;
-  margin-left: clamp(1.5rem, 4vw, 3.5rem);
-  margin-right: clamp(1.5rem, 4vw, 3.5rem);
-  padding: 4.5rem 0 0;
+  margin-inline: auto;
+  padding: 4.5rem clamp(1.5rem, 4vw, 3.5rem) 0;
   position: relative;
   z-index: 10;
 }
