@@ -45,7 +45,7 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
-  font-size: clamp(125%, calc(125% + (100vw - 1440px) * 0.02), 200%);
+  font-size: clamp(125%, calc(125% + (100vw - 1440px) * 0.01), 160%);
   -webkit-tap-highlight-color: transparent;
 }
 
