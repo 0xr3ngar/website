@@ -3,6 +3,7 @@ import { Link } from 'waku';
 import { PageNav } from '../../components/PageNav';
 import { MarkdownContent } from '../../components/MarkdownContent';
 import { TableOfContents } from '../../components/TableOfContents';
+import { ScrollProgress } from '../../components/ScrollProgress';
 import { getPostBySlug, getAllSlugs } from '../../lib/posts';
 import { extractHeadings } from '../../lib/headings';
 import { SEO } from '../../components/SEO';
@@ -49,6 +50,7 @@ export default async function BlogPostPage({ slug }: PageProps<'/blog/[slug]'>) 
                 <Link to="/" className="page-nav-link">← home</Link>
                 <Link to="/blog" className="page-nav-link">← blog</Link>
             </PageNav>
+            <ScrollProgress />
             <TableOfContents headings={headings} />
             <main className="main">
                 <article className="post-header">

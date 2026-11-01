@@ -2,12 +2,35 @@
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
+import go from 'react-syntax-highlighter/dist/esm/languages/prism/go';
+import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import json from 'react-syntax-highlighter/dist/esm/languages/prism/json';
+import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
+import qml from 'react-syntax-highlighter/dist/esm/languages/prism/qml';
+import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
 import { slugify } from '../lib/headings';
 import { HeadingAnchor } from './HeadingAnchor';
 
 interface MarkdownContentProps {
     content: string;
+}
+
+// Only the languages we actually ship — keeps the bundle tiny.
+// Anything not listed here renders as a plain, unhighlighted code block.
+const LANGUAGES = {
+    bash,
+    go,
+    javascript,
+    json,
+    python,
+    qml,
+    typescript,
+} as const;
+
+for (const [name, lang] of Object.entries(LANGUAGES)) {
+    SyntaxHighlighter.registerLanguage(name, lang);
 }
 
 const customTheme: { [key: string]: React.CSSProperties } = {
@@ -85,7 +108,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
                         const match = /language-(\w+)/.exec(className ?? '');
                         const codeString = String(children).replace(/\n$/, '');
 
-                        if (!match) {
+                        if (!match || !(match[1] in LANGUAGES)) {
                             return <code className={className} {...props}>{children}</code>;
                         }
 
