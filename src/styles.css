@@ -185,12 +185,13 @@ body {
 
 /* ── Scroll effects ──────────────────────────────────────── */
 
-.reveal {
+html.js .reveal {
   opacity: 0;
   transform: translateY(1.125rem);
   transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 
+html.js .reveal.revealed,
 .reveal.revealed {
   opacity: 1;
   transform: none;

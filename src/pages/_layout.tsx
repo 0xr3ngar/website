@@ -30,6 +30,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 are rendered via the <SEO /> component in individual pages for reliable hoisting. */}
             <meta name="author" content="Bogdan Nikolov" />
 
+            {/* Marks JS availability before first paint, so .reveal content
+                stays visible when JS never runs. */}
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: "document.documentElement.classList.add('js')",
+                }}
+            />
+
             <div className="bg-glow" aria-hidden="true" />
             {children}
         </>
