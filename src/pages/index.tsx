@@ -1,5 +1,6 @@
 import { Link } from 'waku';
 import { SEO } from '../components/SEO';
+import { Statement } from '../components/Statement';
 import { BASE_URL } from '../lib/seo';
 
 export default async function HomePage() {
@@ -13,14 +14,7 @@ export default async function HomePage() {
             />
 
             <main className="statement">
-                <div className="statement-body">
-                    <h1 className="statement-name">
-                        Bogdan<br />Nikolov
-                    </h1>
-                    <p className="statement-line">
-                        Writings on software, security and the orthodox faith.
-                    </p>
-                </div>
+                <Statement />
                 <nav className="statement-links" aria-label="Site">
                     <Link to="/blog" className="statement-link">
                         blog <span className="statement-arrow">→</span>

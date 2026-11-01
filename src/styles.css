@@ -134,6 +134,11 @@ body {
   animation: statement-in 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) 0.18s backwards;
 }
 
+.statement-verse {
+  font-style: italic;
+  animation: statement-in 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
 .statement-links {
   margin-top: auto;
   display: flex;

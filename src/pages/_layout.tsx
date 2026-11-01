@@ -1,4 +1,5 @@
 import '../styles.css';
+import { ConsoleEgg } from '../components/ConsoleEgg';
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -39,6 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             />
 
             <div className="bg-glow" aria-hidden="true" />
+            <ConsoleEgg />
             {children}
         </>
     );
