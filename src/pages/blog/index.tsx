@@ -21,7 +21,7 @@ export default async function BlogPage() {
         <>
             <SEO
                 title="Blog"
-                description="Thoughts on software, security, and life. Personal essays by Bogdan Nikolov."
+                description="Writings on software, security, and the orthodox faith. Personal essays by Bogdan Nikolov."
                 url="/blog"
                 ogType="website"
             />
@@ -31,8 +31,7 @@ export default async function BlogPage() {
             </PageNav>
             <main className="writings">
                 <header className="writings-masthead">
-                    <h1 className="writings-title">blog<span className="writings-dot" aria-hidden="true">.</span></h1>
-                    <p className="writings-tagline">thoughts on software, security, and life</p>
+                    <h1 className="writings-title">Writings</h1>
                 </header>
 
                 <ol className="writings-list">
@@ -40,24 +39,16 @@ export default async function BlogPage() {
                         <li key={post.slug}>
                             <Reveal delay={i * 90}>
                                 <Link to={`/blog/${post.slug}`} className="entry">
-                                    <span className="entry-number" aria-hidden="true">
-                                        {String(i + 1).padStart(2, '0')}
-                                    </span>
-                                    <div className="entry-body">
-                                        <div className="entry-meta">
-                                            <span className="entry-date">{fmt(post.date)}</span>
-                                            <span className="entry-tags">{post.tags.join(' · ')}</span>
-                                        </div>
-                                        <h2 className="entry-title">{post.title}</h2>
-                                        <p className="entry-excerpt">{post.excerpt}</p>
+                                    <div className="entry-meta">
+                                        <span className="entry-date">{fmt(post.date)}</span>
                                     </div>
+                                    <h2 className="entry-title">{post.title}</h2>
+                                    <p className="entry-excerpt">{post.excerpt}</p>
                                 </Link>
                             </Reveal>
                         </li>
                     ))}
                 </ol>
-
-                <div className="writings-colophon" aria-hidden="true">∎</div>
             </main>
         </>
     );

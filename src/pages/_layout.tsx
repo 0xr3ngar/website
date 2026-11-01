@@ -11,6 +11,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 type="font/woff2"
                 crossOrigin="anonymous"
             />
+            <link
+                rel="preload"
+                href="/fonts/newsreader-latin.woff2?v=2"
+                as="font"
+                type="font/woff2"
+                crossOrigin="anonymous"
+            />
+            <link
+                rel="preload"
+                href="/fonts/newsreader-italic-latin.woff2?v=2"
+                as="font"
+                type="font/woff2"
+                crossOrigin="anonymous"
+            />
 
             {/* Global head elements. Per-page title, description, OG, Twitter, and JSON-LD
                 are rendered via the <SEO /> component in individual pages for reliable hoisting. */}
